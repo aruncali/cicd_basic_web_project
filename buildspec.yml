@@ -13,7 +13,11 @@ phases:
       - docker build -t devops-web .
       - docker tag devops-web:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/devops-web:latest
 
-  post_build:
-    commands:
-      - echo Pushing Docker image
-      - docker push 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
+post_build:
+  commands:
+    - echo Checking Docker images...
+    - docker images
+    - echo Checking ECR login...
+    - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 758808000904.dkr.ecr.us-east-1.amazonaws.com
+    - echo Pushing Docker image...
+    - docker push 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
