@@ -16,4 +16,4 @@ phases:
   post_build:
     commands:
       - echo Pushing Docker image
-      - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/devops-web:latest
+      - docker push 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
