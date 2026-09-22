@@ -23,9 +23,8 @@ phases:
 
   post_build:
     commands:
-      - echo Checking Docker images...
+      - echo Checking Docker images
       - docker images
-      - echo Checking ECR login...
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-      - echo Pushing Docker image...
+      - echo Pushing Docker image to ECR
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
+      - echo Docker image pushed successfully
