@@ -9,13 +9,13 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR
-      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
   build:
     commands:
       - echo Building Docker image
-      - docker build -t devops-web .
-      - docker tag devops-web:latest 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
+      - docker build -t $IMAGE_REPO_NAME .
+      - docker tag $IMAGE_REPO_NAME:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
 
 post_build:
   commands:
@@ -24,4 +24,4 @@ post_build:
     - echo Checking ECR login...
     - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 758808000904.dkr.ecr.us-east-1.amazonaws.com
     - echo Pushing Docker image...
-    - docker push 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
+    - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:latest
