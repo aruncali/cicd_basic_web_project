@@ -1,17 +1,21 @@
 version: 0.2
-
+env:
+  variables:
+     AWS_ACCOUNT_ID: "758808000904"
+     AWS_DEFAULT_REGION: "us-east-1"
+     IMAGE_REPO_NAME: "cicd_web_project"
 phases:
 
   pre_build:
     commands:
       - echo Logging in to Amazon ECR
-      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
 
   build:
     commands:
       - echo Building Docker image
       - docker build -t devops-web .
-      - docker tag devops-web:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/devops-web:latest
+      - docker tag devops-web:latest 758808000904.dkr.ecr.us-east-1.amazonaws.com/devops-web:latest
 
 post_build:
   commands:
