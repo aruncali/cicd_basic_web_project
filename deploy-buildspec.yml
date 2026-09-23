@@ -1,0 +1,40 @@
+version: 0.2
+
+env:
+  variables:
+    AWS_ACCOUNT_ID: "758808000904"
+    AWS_DEFAULT_REGION: "us-east-1"
+    IMAGE_REPO_NAME: "cicd_web_page"
+    EC2_INSTANCE_ID: "i-0f4e19a85c0e7ec6e"
+
+phases:
+  build:
+    commands:
+
+      - echo "Starting deployment..."
+
+      - echo "Sending deployment command to EC2..."
+
+      - |
+        COMMAND_ID=$(aws ssm send-command \
+          --instance-ids "$EC2_INSTANCE_ID" \
+          --document-name "AWS-RunShellScript" \
+          --parameters 'commands=[
+            "aws ecr get-login-password --region us-east-1 | sudo docker login --username AWS --password-stdin 758808000904.dkr.ecr.us-east-1.amazonaws.com",
+            "sudo docker pull 758808000904.dkr.ecr.us-east-1.amazonaws.com/cicd_web_project:latest",
+            "sudo docker stop cicd-web || true",
+            "sudo docker rm cicd-web || true",
+            "sudo docker run -d --name cicd-web -p 80:80 758808000904.dkr.ecr.us-east-1.amazonaws.com/cicd_web_project:latest"
+          ]' \
+          --region us-east-1 \
+          --query "Command.CommandId" \
+          --output text)
+
+      - echo "Deployment command ID:"
+      - echo $COMMAND_ID
+
+      - echo "Deployment command sent successfully"
+
+  post_build:
+    commands:
+      - echo "EC2 deployment completed"
