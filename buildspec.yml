@@ -2,7 +2,9 @@ version: 0.2
 
 env:
   variables:
-    IMAGE_REPO_NAME: "cicd_web_page"
+    AWS_ACCOUNT_ID: 758808000904
+    AWS_DEFAULT_REGION: us-east-1
+    IMAGE_REPO_NAME: cicd_web_page
 
 phases:
 
