@@ -1,5 +1,5 @@
-FROM 758808000904.dkr.ecr.us-east-1.amazonaws.com/nginx:latest
+FROM nginx:latest
 
-COPY . /usr/share/nginx/html
+COPY index.html /usr/share/nginx/html/index.html
 
 EXPOSE 80
