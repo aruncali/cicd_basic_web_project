@@ -1,18 +1,135 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>AWS DevOps Project</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Portfolio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background: #007acc;
+      color: #fff;
+      padding: 1rem 0;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav {
+      margin-top: 0.5rem;
+    }
+    nav a {
+      color: #fff;
+      margin: 0 1rem;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .container {
+      max-width: 900px;
+      margin: 2rem auto;
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    section {
+      margin-bottom: 2rem;
+    }
+    h2 {
+      color: #007acc;
+      border-bottom: 2px solid #007acc;
+      padding-bottom: 0.3rem;
+    }
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .project {
+      background: #e7f0fc;
+      padding: 1rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
+    .project h3 {
+      margin-top: 0;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem 0;
+      background: #007acc;
+      color: #fff;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    @media(max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+      footer {
+        position: static;
+      }
+    }
+  </style>
 </head>
-
 <body>
-    <h1>Welcome to My AWS DevOps Project</h1>
+  <header>
+    <h1>Your Name</h1>
+    <nav>
+      <a href="#about">About Me</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <h2>CI/CD Pipeline</h2>
+  <div class="container">
+    <section id="about">
+      <h2>About Me</h2>
+      <p>Hello!  I enjoy solving problems and learning new technologies.</p>
+    </section>
 
-    <p>AWS | CodePipeline | CodeBuild | Docker | GitHub</p>
+    <section id="projects">
+      <h2>Projects</h2>
+      <div class="projects">
+        <div class="project">
+          <h3>Project One</h3>
+          <p>A brief description of your first project. Include what it does or the technologies used.</p>
+          <a href="#" target="_blank" rel="noopener">View Project</a>
+        </div>
+        <div class="project">
+          <h3>Project Two</h3>
+          <p>Description for your second project. Highlight your role and achievements.</p>
+          <a href="#" target="_blank" rel="noopener">View Project</a>
+        </div>
+        <!-- Add more projects as needed -->
+      </div>
+    </section>
 
-    <p>Deployed using AWS CI/CD</p>
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>You can reach me at:</p>
+      <ul>
+        <li>Email: your.email@example.com</li>
+        <li>Phone: +91 12345 67890</li>
+        <li>LinkedIn: <a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">yourprofile</a></li>
+      </ul>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2026 Your Name. All rights reserved.
+  </footer>
 </body>
 </html>
-
-
