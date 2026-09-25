@@ -1,0 +1,62 @@
+# AWS DevOps CI/CD Pipeline
+
+## Project Overview
+
+This project demonstrates an end-to-end CI/CD pipeline for
+a Docker-based web application using AWS and GitHub.
+
+## Architecture
+
+GitHub
+   ↓
+CodePipeline
+   ↓
+Docker
+   ↓
+Amazon ECR
+   ↓
+Amazon EC2
+   ↓
+Web Application
+
+## Technologies
+
+- AWS
+- CodePipeline
+- Amazon ECR
+- Amazon EC2
+- Docker
+- GitHub
+- IAM
+- CloudWatch
+- Linux
+
+## Project Steps
+
+1. Created web application
+2. Created Dockerfile
+3. Containerized application
+4. Uploaded source code to GitHub
+5. Created ECR repository
+6. Configured IAM roles
+7. Created CodeBuild project
+8. Built Docker image
+9. Pushed image to ECR
+10. Deployed Docker application on EC2
+11.  Monitored builds using CloudWatch
+
+## CI/CD Workflow
+
+Developer pushes code to GitHub.
+
+GitHub triggers CodePipeline.
+Docker image.
+
+The image is pushed to Amazon ECR.
+
+The application is deployed and run using Docker on EC2.
+
+## Result
+
+Successfully implemented an automated CI/CD workflow
+for a Docker-based web application using AWS.
